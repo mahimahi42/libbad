@@ -8,3 +8,9 @@
  */
 #include "linkedlist.h"
 
+void llist_init(lb_llist* list)
+{
+	list->head = NULL;
+	list->tail = NULL;
+	list->length = 0;
+}
