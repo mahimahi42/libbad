@@ -11,5 +11,6 @@
 
 #include "libbad_base.h"
 #include "util.h"
+#include "linkedlist.h"
 
 #endif
