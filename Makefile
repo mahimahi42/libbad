@@ -30,9 +30,12 @@ SOURCES=$(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 OBJECTS=$(patsubst $(SRC_DIR)/%.$(SRC_EXT),$(OBJ_DIR)/%.$(OBJ_EXT),$(SOURCES))
 
 # Targets
-.PHONY: all clean clean_build clean_doc static shared
+.PHONY: all doc clean clean_build clean_doc static shared
 
 all: static
+
+doc: $(SOURCES)
+	doxygen
 
 clean: clean_build clean_doc
 
