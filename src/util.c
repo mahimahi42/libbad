@@ -15,9 +15,42 @@
  * @brief      Print an integer from a DATA
  *
  * @param      out   a pointer to the output file
- * @param      data  a pointer to a DATA
+ * @param      data  a DATA value
  */
 void data_fprint_int(FILE* out, DATA data)
 {
 	fprintf(out, "%lld", data.data_int);
+}
+
+/**
+ * @brief      Print a double from a DATA
+ *
+ * @param      out   a pointer to the output file
+ * @param      data  a DATA value
+ */
+void data_fprint_dbl(FILE* out, DATA data)
+{
+	fprintf(out, "%Lf", data.data_dbl);
+}
+
+/**
+ * @brief      Print a pointer from a DATA
+ *
+ * @param      out   a pointer to the output file
+ * @param      data  a DATA value
+ */
+void data_fprint_ptr(FILE* out, DATA data)
+{
+	fprintf(out, "%p", data.data_ptr);
+}
+
+/**
+ * @brief      Print a pointer from a DATA as a string
+ *
+ * @param      out   a pointer to the output file
+ * @param      data  a DATA value
+ */
+void data_fprint_str(FILE* out, DATA data)
+{
+	fprintf(out, "%s", (char*) data.data_ptr);
 }
