@@ -9,14 +9,7 @@
 
 #include <stdio.h>
 
-#include "libbad_base.h"
-
-/**
- * @brief      A nicer function to print an integer from a DATA
- *
- * @param      d     A pointer to a DATA
- */
-#define data_print_int(d) data_fprint_int(stdin, (d))
+#include "util.h"
 
 /**
  * @brief      Print an integer from a DATA
