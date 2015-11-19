@@ -30,13 +30,18 @@ SOURCES=$(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 OBJECTS=$(patsubst $(SRC_DIR)/%.$(SRC_EXT),$(OBJ_DIR)/%.$(OBJ_EXT),$(SOURCES))
 
 # Targets
-.PHONY: all clean static shared
+.PHONY: all clean clean_build clean_doc static shared
 
 all: static
 
-clean:
-	rm -rf $(OBJ_DIR)
-	rm -rf $(BIN_DIR)
+clean: clean_build clean_doc
+
+clean_build:
+	$(RM) -rf $(OBJ_DIR)
+	$(RM) -rf $(BIN_DIR)
+
+clean_doc:
+	$(RM) -rf $(DOC_DIR)/* ^$(DOC_DIR)/.gitignore
 
 static: $(BIN_DIR)/$(STATIC_TARGET)
 
