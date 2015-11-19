@@ -15,13 +15,15 @@
 typedef long long int llint;
 /**
  * @typedef A convenience typedef for long doubles.
+ */
 typedef long double ldouble;
 
 /**
  * @union DATA
  * @brief A data value for libbad data structures.
  *
- * A DATA can hold either a long long int, a long double, or a pointer.
+ * A DATA can hold either a long long int, a long double, or a pointer. Takes
+ * up 16 bytes.
  */
 typedef union libbad_data_t {
     llint data_int;
