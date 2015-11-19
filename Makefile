@@ -58,7 +58,7 @@ $(BIN_DIR)/$(SHARED_TARGET): $(OBJECTS)
 	$(DIR_GUARD)
 	$(CC) -shared $(LDFLAGS) $^ -o $@
 
-$(OBJECTS): $(SOURCES)
+$(OBJ_DIR)/%.$(OBJ_EXT): $(SRC_DIR)/%.$(SRC_EXT)
 	$(DIR_GUARD)
 	$(CC) $(CFLAGS) $< -o $@
 
