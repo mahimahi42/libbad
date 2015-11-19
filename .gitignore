@@ -33,3 +33,6 @@
 
 # Documentation files
 doc/*
+
+# Personal testing files
+tmp_test/
