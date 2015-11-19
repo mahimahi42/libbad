@@ -10,25 +10,30 @@
 #define _LIBBAD_BASE_H
 
 /**
- * @typedef A convenience typedef for long long ints.
+ * A convenience typedef for long long ints.
  */
 typedef long long int llint;
 /**
- * @typedef A convenience typedef for long doubles.
+ * A convenience typedef for long doubles.
  */
 typedef long double ldouble;
 
 /**
- * @union DATA
+ * @union libbad_data_t
  * @brief A data value for libbad data structures.
  *
- * A DATA can hold either a long long int, a long double, or a pointer. Takes
- * up 16 bytes.
+ * An instance of libbad_data_t can hold either a long long int, a long double, 
+ * or a pointer. Takes up 16 bytes.
  */
-typedef union libbad_data_t {
-    llint data_int;
-    ldouble data_dbl;
-    void* data_ptr;
-} DATA;
+union libbad_data_t {
+    llint data_int;		/**< A long long integer value (8 bytes) */
+    ldouble data_dbl;	/**< A long double value (16 bytes) */
+    void* data_ptr;		/**< A pointer value (8 bytes) */
+};
+
+/**
+ * Use DATA instead of "union libbad_data_t"
+ */
+typedef union libbad_data_t DATA;
 
 #endif
