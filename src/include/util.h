@@ -17,7 +17,18 @@
  * @param      d     A pointer to a DATA
  */
 #define data_print_int(d) data_fprint_int(stdout, (d))
+/**
+ * @brief      A nicer function to print a double from a DATA
+ *
+ * @param      d     A pointer to a DATA
+ */
+#define data_print_dbl(d) data_fprint_dbl(stdout, (d))
+#define data_print_ptr(d) data_fprint_ptr(stdout, (d))
+#define data_print_str(d) data_fprint_str(stdout, (d))
 
 void data_fprint_int(FILE*, DATA);
+void data_fprint_dbl(FILE*, DATA);
+void data_fprint_ptr(FILE*, DATA);
+void data_fprint_str(FILE*, DATA);
 
 #endif
