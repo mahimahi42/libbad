@@ -16,7 +16,7 @@
  *
  * @param      d     A pointer to a DATA
  */
-#define data_print_int(d) data_fprint_int(stdin, (d))
+#define data_print_int(d) data_fprint_int(stdout, (d))
 
 void data_fprint_int(FILE*, DATA);
 
