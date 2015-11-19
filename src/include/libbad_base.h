@@ -23,7 +23,8 @@ typedef long double ldouble;
  * @brief A data value for libbad data structures.
  *
  * An instance of libbad_data_t can hold either a long long int, a long double, 
- * or a pointer. Takes up 16 bytes.
+ * or a pointer. Numerical data should use data_int or data_dbl, while strings 
+ * and other pointer types should use data_ptr. Takes up 16 bytes.
  */
 union libbad_data_t {
     llint data_int;		/**< A long long integer value (8 bytes) */
@@ -35,5 +36,24 @@ union libbad_data_t {
  * Use DATA instead of "union libbad_data_t"
  */
 typedef union libbad_data_t DATA;
+
+/**
+ * @brief      Make a new integer DATA value
+ *
+ * @param      value  an integer to store as DATA
+ */
+#define DINT(value) ((DATA) {.data_int=(value)})
+/**
+ * @brief      Make a new double DATA value
+ *
+ * @param      value  a double to store as DATA
+ */
+#define DDBL(value) ((DATA) {.data_dbl=(value)})
+/**
+ * @brief      Make a new pointer DATA value
+ *
+ * @param      value  a pointer to store as DATA
+ */
+#define DPTR(value) ((DATA) {.data_ptr=(value)})
 
 #endif
