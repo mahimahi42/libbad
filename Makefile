@@ -14,17 +14,14 @@ DOC_DIR=doc
 # Configuration
 PROJECT_NAME=libbad
 PROJECT_TYPE=staticlib
-ifeq ($(PROJECT_TYPE),staticlib)
-TARGET=$(PROJECT_NAME).$(STATIC_LIB_EXT)
-else ifeq ($(PROJECT_TYPE),sharedlib)
-TARGET=$(PROJECT_NAME).$(SHARED_LIB_EXT)
-endif
+STATIC_TARGET=$(PROJECT_NAME).$(STATIC_LIB_EXT)
+SHARED_TARGET=$(PROJECT_NAME).$(SHARED_LIB_EXT)
 
 # Compiler configuration
 CC=gcc
 WARNS=-Wall -Wextra -pedantic
 INCS:=-I(INC_DIR)
-CFLAGS:=-std=c11 -fPIC $(INC) -c
+CFLAGS:=$(WARNS) -std=c99 -fPIC $(INC) -c
 LDFLAGS:=$(WARNS)
 
 # Files
@@ -32,23 +29,26 @@ DIR_GUARD=@mkdir -p $(@D)
 SOURCES=$(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 OBJECTS=$(patsubst $(SRC_DIR)/%.$(SRC_EXT),$(OBJ_DIR)/%.$(OBJ_EXT),$(SOURCES))
 
-.PHONY: all clean
+# Targets
+.PHONY: all clean static shared
 
-all: $(BIN_DIR)/$(TARGET)
+all: static
 
 clean:
 	rm -rf $(OBJ_DIR)
 	rm -rf $(BIN_DIR)
 
-$(BIN_DIR)/$(TARGET): $(OBJECTS)
+static: $(BIN_DIR)/$(STATIC_TARGET)
+
+shared: $(BIN_DIR)/$(SHARED_TARGET)
+
+$(BIN_DIR)/$(STATIC_TARGET): $(OBJECTS)
 	$(DIR_GUARD)
-ifeq ($(PROJECT_TYPE),staticlib)
 	ar rcs $@ $^
-else ifeq ($(PROJECT_TYPE),sharedlib)
+
+$(BIN_DIR)/$(SHARED_TARGET): $(OBJECTS)
+	$(DIR_GUARD)
 	$(CC) -shared $(LDFLAGS) $^ -o $@
-else
-	@echo "Unsupported"
-endif
 
 $(OBJECTS): $(SOURCES)
 	$(DIR_GUARD)
