@@ -27,9 +27,9 @@ typedef long double ldouble;
  * and other pointer types should use data_ptr. Takes up 16 bytes.
  */
 union libbad_data_t {
-    llint data_int;		/**< A long long integer value (8 bytes) */
-    ldouble data_dbl;	/**< A long double value (16 bytes) */
-    void* data_ptr;		/**< A pointer value (8 bytes) */
+    llint data_int;     /**< A long long integer value (8 bytes) */
+    ldouble data_dbl;   /**< A long double value (16 bytes) */
+    void* data_ptr;     /**< A pointer value (8 bytes) */
 };
 
 /**
@@ -38,15 +38,15 @@ union libbad_data_t {
 typedef union libbad_data_t DATA_VAL;
 
 typedef enum {
-	INT = 0x01,
-	DBL = 0x02,
-	PTR = 0x04,
-	STR = 0x08
+    INT = 0x01,
+    DBL = 0x02,
+    PTR = 0x04,
+    STR = 0x08
 } DATA_TYPE;
 
 typedef struct {
-	DATA_TYPE type;
-	DATA_VAL  val;
+    DATA_TYPE type;
+    DATA_VAL  val;
 } DATA;
 
 /**

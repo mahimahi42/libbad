@@ -14,16 +14,16 @@
 #include "libbad_base.h"
 
 struct lb_ll_node {
-	struct lb_ll_node* prev;
-	struct lb_ll_node* next;
-	DATA			   data;
+    struct lb_ll_node* prev;
+    struct lb_ll_node* next;
+    DATA               data;
 };
 typedef struct lb_ll_node* llist_node;
 
 struct lb_llist {
-	llist_node head;
-	llist_node tail;
-	size_t 	   length;
+    llist_node head;
+    llist_node tail;
+    size_t     length;
 };
 typedef struct lb_llist* lb_llist;
 
