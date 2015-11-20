@@ -13,12 +13,12 @@
 
 #include "libbad_base.h"
 
-struct lb_ll_node {
-	struct lb_ll_node* prev;
-	struct lb_ll_node* next;
+struct llist_node {
+	struct llist_node* prev;
+	struct llist_node* next;
 	DATA			   data;
 };
-typedef struct lb_ll_node* llist_node;
+typedef struct llist_node* llist_node;
 
 struct lb_llist {
 	llist_node head;
