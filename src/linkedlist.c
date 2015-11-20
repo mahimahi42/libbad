@@ -26,8 +26,8 @@ void llist_print(lb_llist list)
 	} else {
 		llist_node n = list->head;
 		while (n != NULL) {
-			data_print_str(n->data);
-			puts("");
+			data_print(n->data);
+			if (n->next != NULL) printf(" -> ");
 			n = n->next;
 		}
 	}
@@ -35,7 +35,7 @@ void llist_print(lb_llist list)
 
 void llist_append(lb_llist list, DATA data)
 {
-	llist_node n = (llist_node) malloc(sizeof(llist_node));
+	llist_node n = (llist_node) malloc(sizeof(struct lb_ll_node));
 	n->prev = NULL;
 	n->next = NULL;
 	n->data = data;
@@ -43,7 +43,12 @@ void llist_append(lb_llist list, DATA data)
 	if (list->head == NULL) {
 		list->head = n;
 		list->tail = n;
+	} else if (list->length == 1) {
+		list->tail = n;
+		list->head->next = list->tail;
+		list->tail->prev = list->head;
 	} else {
+		list->tail->next = n;
 		llist_node old_tail = list->tail;
 		list->tail = n;
 		list->tail->prev = old_tail;
