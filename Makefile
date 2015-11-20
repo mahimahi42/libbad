@@ -38,6 +38,7 @@ doc: $(SOURCES)
 	doxygen
 
 clean: clean_build clean_doc
+	$(RM) -rf $(shell find . -name *.orig)
 
 clean_build:
 	$(RM) -rf $(OBJ_DIR)

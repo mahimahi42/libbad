@@ -36,3 +36,6 @@ doc/*
 
 # Personal testing files
 tmp_test/
+
+# Merge temporary files
+*.orig
