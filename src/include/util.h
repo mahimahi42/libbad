@@ -17,6 +17,7 @@
  * @param      d     A DATA value
  */
 #define data_print(d) data_fprint(stdout, (d))
+#define data_puts(d) data_fputs(stdout, (d))
 
 #define data_fprintf_int(d, fmt) fprintf(out, (fmt), (d).val.data_int)
 #define data_fprintf_dbl(d, fmt) fprintf(out, (fmt), (d).val.data_dbl)
@@ -24,5 +25,6 @@
 #define data_fprintf_str(d, fmt) fprintf(out, (fmt), (char*) (d).val.data_ptr)
 
 void data_fprint(FILE*, DATA);
+void data_fputs(FILE*, DATA);
 
 #endif
