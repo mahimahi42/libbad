@@ -29,5 +29,6 @@ typedef struct lb_llist* lb_llist;
 
 void llist_init(lb_llist);
 void llist_print(lb_llist);
+void llist_append(lb_llist, DATA);
 
 #endif
