@@ -18,15 +18,16 @@ struct lb_ll_node {
 	struct lb_ll_node* next;
 	DATA			   data;
 };
-typedef struct lb_ll_node lb_ll_node;
+typedef struct lb_ll_node* llist_node;
 
 struct lb_llist {
-	lb_ll_node* head;
-	lb_ll_node* tail;
-	size_t 		length;
+	llist_node head;
+	llist_node tail;
+	size_t 	   length;
 };
-typedef struct lb_llist lb_llist;
+typedef struct lb_llist* lb_llist;
 
-void llist_init(lb_llist*);
+void llist_init(lb_llist);
+void llist_print(lb_llist);
 
 #endif
