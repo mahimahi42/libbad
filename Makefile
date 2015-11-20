@@ -30,7 +30,7 @@ SOURCES=$(wildcard $(SRC_DIR)/*.$(SRC_EXT))
 OBJECTS=$(patsubst $(SRC_DIR)/%.$(SRC_EXT),$(OBJ_DIR)/%.$(OBJ_EXT),$(SOURCES))
 
 # Targets
-.PHONY: all doc clean clean_build clean_doc static shared test
+.PHONY: all doc clean clean_build clean_doc static shared test build_test
 
 all: static
 
@@ -62,7 +62,9 @@ $(OBJECTS): $(SOURCES)
 	$(DIR_GUARD)
 	$(CC) $(CFLAGS) $< -o $@
 
-test:
+test: clean all build_test
+
+build_test:
 	$(eval DIR:=$(firstword $(wildcard tmp_test)))
 ifeq ($(DIR),"")
 	@echo "Unsupported currently"

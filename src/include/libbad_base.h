@@ -54,18 +54,26 @@ typedef struct {
  *
  * @param      value  an integer to store as DATA
  */
-// #define DINT(value) ((DATA) {.data_int=(value)})
+#define DVINT(value) ((DATA_VAL) {.data_int=(value)})
 /**
  * @brief      Make a new double DATA value
  *
  * @param      value  a double to store as DATA
  */
-// #define DDBL(value) ((DATA) {.data_dbl=(value)})
+#define DVDBL(value) ((DATA_VAL) {.data_dbl=(value)})
 /**
  * @brief      Make a new pointer DATA value
  *
  * @param      value  a pointer to store as DATA
  */
-// #define DPTR(value) ((DATA) {.data_ptr=(value)})
+#define DVPTR(value) ((DATA_VAL) {.data_ptr=(value)})
+
+#define DINT(value) ((DATA) {.type=INT,.val=DVINT((value))})
+
+#define DDBL(value) ((DATA) {.type=DBL,.val=DVDBL((value))})
+
+#define DPTR(value) ((DATA) {.type=PTR,.val=DVPTR((value))})
+
+#define DSTR(value) ((DATA) {.type=STR,.val=DVPTR((value))})
 
 #endif
