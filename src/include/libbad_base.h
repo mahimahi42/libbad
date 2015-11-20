@@ -33,27 +33,39 @@ union libbad_data_t {
 };
 
 /**
- * Use DATA instead of "union libbad_data_t"
+ * Use DATA_VAL instead of "union libbad_data_t"
  */
-typedef union libbad_data_t DATA;
+typedef union libbad_data_t DATA_VAL;
+
+typedef enum {
+	INT = 0x01,
+	DBL = 0x02,
+	PTR = 0x04,
+	STR = 0x08
+} DATA_TYPE;
+
+typedef struct {
+	DATA_TYPE type;
+	DATA_VAL  val;
+} DATA;
 
 /**
  * @brief      Make a new integer DATA value
  *
  * @param      value  an integer to store as DATA
  */
-#define DINT(value) ((DATA) {.data_int=(value)})
+// #define DINT(value) ((DATA) {.data_int=(value)})
 /**
  * @brief      Make a new double DATA value
  *
  * @param      value  a double to store as DATA
  */
-#define DDBL(value) ((DATA) {.data_dbl=(value)})
+// #define DDBL(value) ((DATA) {.data_dbl=(value)})
 /**
  * @brief      Make a new pointer DATA value
  *
  * @param      value  a pointer to store as DATA
  */
-#define DPTR(value) ((DATA) {.data_ptr=(value)})
+// #define DPTR(value) ((DATA) {.data_ptr=(value)})
 
 #endif

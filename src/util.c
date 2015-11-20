@@ -19,7 +19,7 @@
  */
 void data_fprint_int(FILE* out, DATA data)
 {
-	fprintf(out, "%lld", data.data_int);
+	fprintf(out, "%lld", data.val.data_int);
 }
 
 /**
@@ -30,7 +30,7 @@ void data_fprint_int(FILE* out, DATA data)
  */
 void data_fprint_dbl(FILE* out, DATA data)
 {
-	fprintf(out, "%Lf", data.data_dbl);
+	fprintf(out, "%Lf", data.val.data_dbl);
 }
 
 /**
@@ -41,7 +41,7 @@ void data_fprint_dbl(FILE* out, DATA data)
  */
 void data_fprint_ptr(FILE* out, DATA data)
 {
-	fprintf(out, "%p", data.data_ptr);
+	fprintf(out, "%p", data.val.data_ptr);
 }
 
 /**
@@ -52,5 +52,5 @@ void data_fprint_ptr(FILE* out, DATA data)
  */
 void data_fprint_str(FILE* out, DATA data)
 {
-	fprintf(out, "%s", (char*) data.data_ptr);
+	fprintf(out, "%s", (char*) data.val.data_ptr);
 }
