@@ -12,33 +12,17 @@
 #include "libbad_base.h"
 
 /**
- * @brief      A nicer function to print an integer from a DATA.
+ * @brief      A nicer function to print a DATA value.
  *
  * @param      d     A DATA value
  */
-#define data_print_int(d) data_fprint_int(stdout, (d))
-/**
- * @brief      A nicer function to print a double from a DATA.
- *
- * @param      d     A DATA value
- */
-#define data_print_dbl(d) data_fprint_dbl(stdout, (d))
-/**
- * @brief      A nicer function to print a pointer from a DATA.
- *
- * @param      d     A DATA value
- */
-#define data_print_ptr(d) data_fprint_ptr(stdout, (d))
-/**
- * @brief      A nicer function to print a pointer of a DATA as a string.
- *
- * @param      d     A DATA value
- */
-#define data_print_str(d) data_fprint_str(stdout, (d))
+#define data_print(d) data_fprint(stdout, (d))
 
-void data_fprint_int(FILE*, DATA);
-void data_fprint_dbl(FILE*, DATA);
-void data_fprint_ptr(FILE*, DATA);
-void data_fprint_str(FILE*, DATA);
+#define data_fprintf_int(d, fmt) fprintf(out, (fmt), (d).val.data_int)
+#define data_fprintf_dbl(d, fmt) fprintf(out, (fmt), (d).val.data_dbl)
+#define data_fprintf_ptr(d, fmt) fprintf(out, (fmt), (d).val.data_ptr)
+#define data_fprintf_str(d, fmt) fprintf(out, (fmt), (char*) (d).val.data_ptr)
+
+void data_fprint(FILE*, DATA);
 
 #endif
