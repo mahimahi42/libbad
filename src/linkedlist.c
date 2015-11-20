@@ -7,6 +7,7 @@
  *            See LICENSE.txt for details.
  */
 #include <stdio.h>
+#include <stdlib.h> // malloc
 
 #include "linkedlist.h"
 #include "util.h"
@@ -30,4 +31,22 @@ void llist_print(lb_llist list)
 			n = n->next;
 		}
 	}
+}
+
+void llist_append(lb_llist list, DATA data)
+{
+	llist_node n = (llist_node) malloc(sizeof(llist_node));
+	n->prev = NULL;
+	n->next = NULL;
+	n->data = data;
+
+	if (list->head == NULL) {
+		list->head = n;
+		list->tail = n;
+	} else {
+		llist_node old_tail = list->tail;
+		list->tail = n;
+		list->tail->prev = old_tail;
+	}
+	list->length++;
 }

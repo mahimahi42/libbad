@@ -21,7 +21,7 @@ SHARED_TARGET=$(PROJECT_NAME).$(SHARED_LIB_EXT)
 CC=gcc
 WARNS=-Wall -Wextra -pedantic
 INCS:=-I$(INC_DIR)
-CFLAGS:=$(WARNS) -std=c99 -fPIC $(INCS) -c
+CFLAGS:=$(WARNS) -std=c99 -fPIC $(INCS) -g -c
 LDFLAGS:=$(WARNS)
 
 # Files
